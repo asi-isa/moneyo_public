@@ -1,0 +1,45 @@
+:root {
+  --accent-color: white;
+  --accent-color-80: rgba(255, 255, 255, 0.8);
+  --accent-color-50: rgba(255, 255, 255, 0.5);
+  --accent-color-30: rgba(255, 255, 255, 0.3);
+  --accent-color-10: rgba(255, 255, 255, 0.1);
+  --bg-color: black;
+  --bg-color-80: rgba(0, 0, 0, 0.8);
+  --bg-color-30: rgba(0, 0, 0, 0.3);
+  --main-color: #ffd31d;
+  --main-color-30: rgba(255, 211, 29, 0.3);
+}
+
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+svg {
+  transform: scale(1.7);
+}
+
+.flex_space_around_gap1rem {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+#learn_more {
+  height: 100vh;
+  width: 100vw;
+  background-color: red;
+}

@@ -1,0 +1,98 @@
+.signinup {
+  padding: 1rem;
+  gap: 1rem;
+  background-color: var(--bg-color);
+  color: var(--accent-color);
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.goback {
+  display: flex;
+  place-content: center;
+  border: 2px solid var(--accent-color-30);
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+}
+.goback:hover,
+.goback:focus,
+.goback:active {
+  border: 2px solid var(--accent-color);
+}
+.faded {
+  font-size: 0.9rem;
+  color: var(--accent-color-80);
+  margin-bottom: 0.8rem;
+}
+.oauths {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.oauth {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.5rem;
+  padding: 1rem 0;
+  background-color: transparent;
+  cursor: pointer;
+  flex-grow: 1;
+}
+.oauth:hover,
+.oauth:focus,
+.oauth:active {
+  border: 2px solid rgba(255, 255, 255, 1);
+}
+.oauth svg {
+  transform: scale(2);
+  color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+}
+
+.form input {
+  margin-top: 0.3rem;
+  border: 2px solid var(--accent-color-30);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+.form input:hover,
+.form input:focus,
+.form input:active {
+  border: 2px solid var(--accent-color);
+}
+.btn {
+  padding: 0.5rem;
+  margin-top: 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid var(--accent-color-30);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.btn:hover,
+.btn:focus,
+.btn:active {
+  border: 2px solid var(--accent-color);
+}
+
+.signup_link {
+  color: white;
+  font-weight: 700;
+}

@@ -1,0 +1,114 @@
+.card {
+  padding: 0.5rem 1rem;
+  /* background-color: #f8f8f8; */
+  border: 2px solid rgba(245, 245, 245, 0.33);
+  border-radius: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+
+  cursor: pointer;
+  /* transition: transform 350ms ease, box-shadow 350ms ease; */
+  transition: border 350ms ease;
+  /* border-bottom: 5px solid #f8f8f8; */
+  width: 94vw;
+  margin-bottom: 0.5rem;
+}
+
+.card:hover,
+.card:focus,
+.card:active {
+  /* transform: translateY(-0.1rem); */
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+  border: 2px solid rgba(245, 245, 245, 1);
+}
+
+.icon {
+  transform: scale(1.2);
+}
+
+.numbers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.numbers_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.balance_arrow {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.arrow_container {
+  padding: 0.3rem;
+  background-color: rgba(0, 128, 0, 0.2);
+  display: flex;
+  place-content: center;
+  border-radius: 50%;
+}
+
+.arrow_updown {
+  color: green;
+  transform: scale(1.2);
+}
+
+.amount {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.expected_balance {
+  font-size: 0.8rem;
+}
+.expected_balance p {
+  font-size: 0.7rem;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+}
+
+.faded_info {
+  font-size: 0.9rem;
+  /* color: rgba(0, 0, 0, 0.5); */
+  color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  gap: 1rem;
+}
+
+.additional_info {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+
+.badge {
+  background-color: green;
+  border-radius: 0.4rem;
+  color: white;
+  padding: 0.3rem;
+  font-weight: bold;
+  width: 5ch;
+  display: flex;
+  place-content: center;
+}
+
+.badge svg {
+  transform: scale(1.4);
+}

@@ -1,0 +1,114 @@
+.calendar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: stretch;
+  gap: 1rem;
+  flex-grow: 1;
+  padding: 0.5rem 0.1rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--accent-color-30);
+  margin-bottom: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.2rem;
+  padding-top: 0.5rem;
+}
+
+.month_year {
+  display: flex;
+  gap: 0.8rem;
+}
+.month {
+  font-weight: 700;
+  width: 9ch;
+}
+.year {
+  color: var(--gray);
+}
+
+.next_prev_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--accent-color-30);
+  background-color: var(--bg-color);
+  color: var(--accent-color);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border 350ms ease-in;
+  transform: scale(1.2);
+}
+.next_prev_btn:hover,
+.next_prev_btn:focus,
+.next_prev_btn:active {
+  border: 2px solid var(--accent-color);
+}
+.next_prev_btn svg {
+  transform: scale(2.3);
+}
+.weekdays {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.table_head_data,
+.table_data {
+  width: 4ch;
+  height: 4ch;
+  text-align: center;
+}
+
+.table_data {
+  cursor: pointer;
+}
+.offset_day {
+  cursor: initial;
+}
+
+.table_data:hover,
+.table_data:focus,
+.table_data:active {
+  background-color: var(--btn-bg);
+  border-radius: 50%;
+  color: white;
+}
+
+.selected_day {
+  border-radius: 50%;
+  border: 2px solid var(--accent-color);
+  background-color: var(--accent-color-30);
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.to_day {
+  border-radius: 50%;
+  border: 2px solid var(--main-color);
+  background-color: var(--main-color-30);
+}
+
+.payday {
+  position: relative;
+}
+.payday::after {
+  position: absolute;
+  content: "";
+  bottom: 2px;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  height: 3px;
+  width: 3px;
+  border-radius: 50%;
+  background-color: var(--accent-color-50);
+}

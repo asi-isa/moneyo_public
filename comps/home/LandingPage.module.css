@@ -1,0 +1,101 @@
+.particles {
+  background-color: black;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.home {
+  padding-top: 5rem;
+  color: var(--accent-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  height: 100vh;
+}
+
+.header {
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+}
+
+.subtitle {
+  color: var(--accent-color-80);
+  margin-bottom: 3rem;
+}
+
+.auth_cards {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  width: 80%;
+}
+
+.auth_card_learn,
+.auth_card {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--accent-color-30);
+  border-radius: 0.5rem;
+  transition: border 350ms ease-in;
+  cursor: pointer;
+  text-align: center;
+  /* background-color: var(--accent-color-10); */
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-top: 15rem;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.auth_card_learn {
+  border: 2px solid var(--accent-color);
+  transition: border 350ms ease-in;
+}
+
+.auth_card:hover,
+.auth_card:focus,
+.auth_card:active {
+  border: 2px solid var(--accent-color);
+}
+.auth_card_learn:hover,
+.auth_card_learn:focus,
+.auth_card_learn:active {
+  border: 2px solid var(--accent-color-30);
+}
+
+/* .learn_more_btn {
+  margin-top: 6rem;
+  border: 2px solid var(--accent-color-30);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--accent-color);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: border 350ms ease-in;
+}
+.learn_more_btn:hover,
+.learn_more_btn:focus,
+.learn_more_btn:active {
+  border: 2px solid var(--accent-color);
+} */
+
+.copyright {
+  color: var(--accent-color-50);
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+.copyright svg {
+  transform: scale(1.2);
+}
+
+.isatech {
+  color: var(--accent-color);
+}
