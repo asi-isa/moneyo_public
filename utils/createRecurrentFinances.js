@@ -30,10 +30,8 @@ export default function createRecurrentFinances(firstFinance) {
     // übernehme zunächst alle Eigenschaften und passe nur das neue Datum an
     const nextFinance = { ...finance };
     nextFinance["date"] = nextDate;
-    console.log("nextFinance", nextFinance);
     // recurrentFormDataArray.push(formData);
     recurrentFinances = [...recurrentFinances, nextFinance];
-    console.log("recurrentFormDataArray", recurrentFinances);
   }
 
   return recurrentFinances;

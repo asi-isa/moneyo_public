@@ -4,7 +4,8 @@ export default function getNextDate(currentDate, interval) {
     nextDate = new Date(
       currentDate.getFullYear(),
       currentDate.getMonth() + 1,
-      currentDate.getDate() + 1 // +1 da sonst Vortag
+      currentDate.getDate() + 1, // +1 da sonst Vortag
+      0
     );
   }
   return nextDate;

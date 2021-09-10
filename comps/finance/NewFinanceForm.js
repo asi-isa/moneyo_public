@@ -30,9 +30,7 @@ export default function NewFinanceForm({
 
   async function newFinanceHandler(e) {
     e.preventDefault();
-    // e.currentTarget.elements.forEach((field) => console.log(field));
     const formData = {};
-    // let recurrentFormDataArray = [];
 
     Array.from(e.currentTarget.elements).forEach(
       (field) => field.id && (formData[field.id] = field.value)
@@ -40,40 +38,6 @@ export default function NewFinanceForm({
 
     formData["date"] = new Date(formData["date"]);
     formData["user_id"] = session.user.id;
-
-    // if (showRecurrentDialog) {
-    //   recurrentFormDataArray = createRecurrentFinances(formData);
-    // const recurrentUUID = createUUID();
-    // formData["recurrent_id"] = recurrentUUID;
-
-    // const recurrentUntil = new Date(formData["recurrent_until_date"]);
-    // const timeUntilInMilliSeconds = recurrentUntil - formData["date"];
-    // const avgIntervalInMilliSeconds = getAvgIntervalInMilliSeconds(
-    //   formData["interval"]
-    // );
-    // const numberOfCardsToCreate = Math.ceil(
-    //   timeUntilInMilliSeconds / avgIntervalInMilliSeconds
-    // );
-
-    // recurrentFormDataArray.push(formData);
-
-    // const firstDate = formData["date"];
-    // console.log("firstDate", firstDate);
-    // for (let i = 1; i < numberOfCardsToCreate; i++) {
-    //   // getNextDateBasedOfInterval
-    //   const nextDate = new Date(
-    //     firstDate.getFullYear(),
-    //     firstDate.getMonth() + i,
-    //     firstDate.getDate() + 1
-    //   );
-    //   const nextFormData = { ...formData };
-    //   nextFormData["date"] = nextDate;
-    //   console.log("formData", nextFormData);
-    //   // recurrentFormDataArray.push(formData);
-    //   recurrentFormDataArray = [...recurrentFormDataArray, nextFormData];
-    //   console.log("recurrentFormDataArray", recurrentFormDataArray);
-    // }
-    // }
 
     try {
       console.log("wo");
