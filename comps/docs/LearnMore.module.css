@@ -1,0 +1,6 @@
+.learnmore {
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  color: var(--accent-color);
+  padding: 1rem;
+}
