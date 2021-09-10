@@ -10,7 +10,7 @@ export default function Logout() {
   const [loading, setLoading] = useState(false);
   const [session, setSession] = useState(null);
 
-  const [signoutSuccess, setSignoutSuccess] = useState(false); // starter stopper für counter
+  const [signoutSuccess, setSignoutSuccess] = useState(false); // starter/stopper für counter
 
   useEffect(() => {
     setSession(supabase.auth.session());
@@ -44,11 +44,7 @@ export default function Logout() {
       </div>
 
       {signoutSuccess && (
-        <Alert
-          counterBeginsAt={10}
-          text="ich geh meinen weg"
-          footertext="have a nice day :)"
-        />
+        <Alert counterBeginsAt={10} text="" footertext="have a nice day :)" />
       )}
       {loading && <Loader />}
     </section>
