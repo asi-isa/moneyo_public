@@ -11,10 +11,12 @@ import {
 import { useState } from "react";
 import { supabase } from "../../db/supabase";
 import Loader from "../../comps/loader/Loader";
+import Info from "../../comps/info/Info";
 
 export default function Signin() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
 
   async function loginHandler(e) {
     e.preventDefault();
@@ -59,6 +61,10 @@ export default function Signin() {
     }
   }
 
+  function toggleInfo() {
+    setShowInfo(!showInfo);
+  }
+
   return (
     <section className={styles.signin}>
       <div className={styles.header}>
@@ -73,10 +79,10 @@ export default function Signin() {
       <div className={styles.auth_section}>
         <p className={styles.faded}>log in with one of the following options</p>
         <div className={styles.oauths}>
-          <button className={styles.oauth}>
+          <button className={styles.oauth} onClick={toggleInfo}>
             <AiOutlineGoogle />
           </button>
-          <button className={styles.oauth}>
+          <button className={styles.oauth} onClick={toggleInfo}>
             <AiFillApple />
           </button>
         </div>
@@ -84,7 +90,7 @@ export default function Signin() {
           <button className={styles.oauth} onClick={gitHubAuth}>
             <AiOutlineGithub />
           </button>
-          <button className={styles.oauth}>
+          <button className={styles.oauth} onClick={toggleInfo}>
             <AiFillFacebook />
           </button>
         </div>
@@ -116,6 +122,13 @@ export default function Signin() {
         </Link>
       </p>
       {loading && <Loader />}
+      {showInfo && (
+        <Info
+          headerText="be patient :)"
+          text="currently we only support GitHub as a authentication method"
+          closeInfo={toggleInfo}
+        />
+      )}
     </section>
   );
 }

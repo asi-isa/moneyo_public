@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "../../styles/Signup.module.css";
 import Alert from "../../comps/alert/Alert";
 import Loader from "../../comps/loader/Loader";
+import Info from "../../comps/info/Info";
 import { supabase } from "../../db/supabase";
 
 import Link from "next/link";
@@ -17,6 +18,11 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
 
   const [signupSuccess, setSignupSuccess] = useState(false);
+
+  const [showInfo, setShowInfo] = useState(false);
+  function toggleInfo() {
+    setShowInfo(!showInfo);
+  }
 
   async function signupHandler(e) {
     e.preventDefault();
@@ -99,10 +105,10 @@ export default function Signup() {
           sign up with one of the following options
         </p>
         <div className={styles.oauths}>
-          <button className={styles.oauth}>
+          <button className={styles.oauth} onClick={toggleInfo}>
             <AiOutlineGoogle />
           </button>
-          <button className={styles.oauth}>
+          <button className={styles.oauth} onClick={toggleInfo}>
             <AiFillApple />
           </button>
         </div>
@@ -110,7 +116,7 @@ export default function Signup() {
           <button className={styles.oauth} onClick={gitHubAuth}>
             <AiOutlineGithub />
           </button>
-          <button className={styles.oauth}>
+          <button className={styles.oauth} onClick={toggleInfo}>
             <AiFillFacebook />
           </button>
         </div>
@@ -139,6 +145,13 @@ export default function Signup() {
         </Link>
       </p>
       {loading && <Loader />}
+      {showInfo && (
+        <Info
+          headerText="be patient :)"
+          text="currently we only support GitHub as a authentication method"
+          closeInfo={toggleInfo}
+        />
+      )}
     </section>
   );
 }
