@@ -32,7 +32,7 @@ export default function Signup() {
         password,
       });
 
-      if (error && status !== 406) {
+      if (error !== 406) {
         throw error;
       }
 
@@ -51,6 +51,24 @@ export default function Signup() {
       }
 
       setSignupSuccess(true);
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function gitHubAuth() {
+    try {
+      setLoading(true);
+
+      const { user, session, error } = await supabase.auth.signIn({
+        provider: "github",
+      });
+
+      if (error) throw error;
+
+      router.push("/");
     } catch (error) {
       alert(error.message);
     } finally {
@@ -89,7 +107,7 @@ export default function Signup() {
           </button>
         </div>
         <div className={styles.oauths}>
-          <button className={styles.oauth}>
+          <button className={styles.oauth} onClick={gitHubAuth}>
             <AiOutlineGithub />
           </button>
           <button className={styles.oauth}>

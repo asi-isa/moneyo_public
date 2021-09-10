@@ -40,6 +40,25 @@ export default function Signin() {
       setLoading(false);
     }
   }
+
+  async function gitHubAuth() {
+    try {
+      setLoading(true);
+
+      const { user, session, error } = await supabase.auth.signIn({
+        provider: "github",
+      });
+
+      if (error) throw error;
+
+      router.push("/");
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <section className={styles.signin}>
       <div className={styles.header}>
@@ -62,7 +81,7 @@ export default function Signin() {
           </button>
         </div>
         <div className={styles.oauths}>
-          <button className={styles.oauth}>
+          <button className={styles.oauth} onClick={gitHubAuth}>
             <AiOutlineGithub />
           </button>
           <button className={styles.oauth}>

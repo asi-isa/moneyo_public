@@ -25,6 +25,7 @@ import thousandPoint from "../../utils/thousandPoint";
 
 export default function MainPage({ session }) {
   const today = getToday();
+  const currentMonth = new Date().getMonth();
   const [date, setDate] = useState(new Date());
   const [loading, setLoading] = useState(false);
   const [finances, setFinances] = useState(null);
@@ -71,7 +72,6 @@ export default function MainPage({ session }) {
   }
 
   useEffect(() => {
-    console.log("feuer", session);
     if (session) getFinances();
   }, [session]);
 
@@ -99,34 +99,16 @@ export default function MainPage({ session }) {
       }
 
       if (data) {
-        console.log("data", data);
         setFinances(data);
         setBalance(getCurrentBalance(data));
 
-        // auslagern in line Chart (next 7 days)
-        // setFutureFinances(
-        //   data.filter((finance) => new Date(finance.date) >= today)
-        // );
+        // damit aeltere Finanzen nicht als Card angezeigt werden
         setFinancesAtMonth(
-          data.filter((finance) => new Date(finance.date) >= today)
+          data.filter((finance) => new Date(finance.date) >= currentMonth)
         );
 
-        const fDates = getDatesFromObjArr(data);
-        setFinanceDate(fDates);
-        // financesFuture damit unnötige vergleiche vermiedern werden
-        // ist aber nicht sofort nutzbar, also nach dem setFinanceFutue
-        // ist financeFuture nicht sofort verfügbar
-        // const { income, expense } = getNextNFinances(7, futureFinances);
-        // setSeries([
-        //   {
-        //     name: "income",
-        //     data: income,
-        //   },
-        //   {
-        //     name: "expenses",
-        //     data: expense,
-        //   },
-        // ]);
+        // markiere paydays in Kalendar
+        setFinanceDate(getDatesFromObjArr(data));
       }
     } catch (error) {
       alert(error.message);
@@ -179,56 +161,11 @@ export default function MainPage({ session }) {
 
         <BsCalendar onClick={toggleCalendar} className={styles.pointer} />
 
-        {/* <AnimatePresence>
-          {!showCalendar && (
-            <motion.div
-              onClick={toggleCalendar}
-              className={styles.pointer}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ display: "none" }}
-            >
-              <BsCalendar />
-            </motion.div>
-          )}
-        </AnimatePresence> */}
-
-        {/* <AnimatePresence>
-          {showCalendar && (
-            <motion.div
-              onClick={toggleCalendar}
-              className={styles.pointer}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ display: "none" }}
-            >
-              <BsPieChartFill />
-            </motion.div>
-          )}
-        </AnimatePresence> */}
-
         <BsPlusSquare
           onClick={toggleNewFinanceForm}
           className={styles.pointer}
         />
       </header>
-
-      {/* <AnimatePresence>
-        {finances && !showCalendar && (
-          <motion.div
-            className={styles.doughnut_con}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ display: "none" }}
-            // transition={{ duration: 0.4 }}
-            // whileTap={{ scale: 0.9 }}
-            // exit={{ x: "-100%" }}
-          >
-            <h2>ausgaben nach kategorie</h2>
-            <DoughnutChart chartData={finances} />
-          </motion.div>
-        )}
-      </AnimatePresence> */}
 
       <AnimatePresence>
         {showCalendar && financeDates && (
@@ -238,8 +175,6 @@ export default function MainPage({ session }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.45 }}
-            // whileTap={{ scale: 0.9 }}
-            // exit={{ x: "-100%" }}
           >
             <Calendar getSelectedDate={getSelectedDate} dates={financeDates} />
           </motion.div>
@@ -254,8 +189,6 @@ export default function MainPage({ session }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            // whileTap={{ scale: 0.9 }}
-            // exit={{ x: "-100%" }}
           >
             <NewFinanceForm
               closeFormHandler={toggleNewFinanceForm}
@@ -274,9 +207,6 @@ export default function MainPage({ session }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            // transition={{ duration: 0.4 }}
-            // whileTap={{ scale: 0.9 }}
-            // exit={{ x: "-100%" }}
           >
             <AlterFinanceForm
               currentFinanceToAlter={currentFinanceToAlter}
@@ -296,22 +226,14 @@ export default function MainPage({ session }) {
             animate={"visible"}
             exit={{ opacity: 0 }}
           >
-            {balance && (
-              <CurrentBalanceCard
-                currentBalance={thousandPoint(balance)}
-                date={today}
-              />
-            )}
+            <CurrentBalanceCard
+              currentBalance={thousandPoint(balance)}
+              date={today}
+            />
 
             {financesAtMonth &&
               financesAtMonth.map((finance) => (
-                <motion.div
-                  key={finance.id}
-                  variants={item}
-                  // initial="hidden"
-                  // animate="visible"
-                  // transition={{ duration: 1, delay: 0.5 }}
-                >
+                <motion.div key={finance.id} variants={item}>
                   <Card
                     name={finance.name}
                     amount={finance.amount}
