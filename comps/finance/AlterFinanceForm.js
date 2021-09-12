@@ -2,31 +2,40 @@ import styles from "./AlterFinanceForm.module.css";
 import { AiOutlineClose } from "react-icons/ai";
 import { supabase } from "../../db/supabase";
 import getCategoryIcon from "../../utils/getCategoryIcon";
+import createRecurrentFinances from "../../utils/createRecurrentFinances";
 import { BsArrowRepeat, BsCalendarFill } from "react-icons/bs";
 import { MdAttachMoney } from "react-icons/md";
 
 export default function AlterFinanceForm(props) {
-  // console.log("recurrent_id", props.currentFinanceToAlter.recurrent_id);
+  console.log("recurrent_id", props.currentFinanceToAlter);
   async function alterFinanceHandler(e) {
     e.preventDefault();
     // e.currentTarget.elements.forEach((field) => console.log(field));
-    const formData = {};
+    const formData = { ...props.currentFinanceToAlter };
 
     Array.from(e.currentTarget.elements).forEach(
       (field) => field.id && (formData[field.id] = field.value)
     );
 
-    formData["date"] = new Date(formData["date"]);
+    // formData["date"] = new Date(formData["date"]);
+
+    console.log("props.currentFinanceToAlter", props.currentFinanceToAlter);
+    console.log("formdata", formData);
 
     try {
       let data, error;
       // update all recurrent finances
       if (props.currentFinanceToAlter.recurrent_id) {
+        formData["user_id"] = props.session.user.id;
+        // delete all finances
         ({ data, error } = await supabase
           .from("finance")
-          .update([formData])
-          .eq("id", props.currentFinanceToAlter.id)
+          .delete()
           .match({ recurrent_id: props.currentFinanceToAlter.recurrent_id }));
+        // insert new finances
+        ({ data, error } = await supabase
+          .from("finance")
+          .insert(createRecurrentFinances(formData)));
       } else {
         ({ data, error } = await supabase
           .from("finance")

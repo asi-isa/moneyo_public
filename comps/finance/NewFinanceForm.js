@@ -40,7 +40,6 @@ export default function NewFinanceForm({
     formData["user_id"] = session.user.id;
 
     try {
-      console.log("wo");
       let data, error;
       // not recurrent finance
       if (!showRecurrentDialog) {
@@ -50,9 +49,6 @@ export default function NewFinanceForm({
           .from("finance")
           .insert(createRecurrentFinances(formData)));
       }
-      console.log("hängt");
-
-      console.log("{ data, error }", { data, error });
 
       if (error) {
         throw error;

@@ -17,3 +17,6 @@ mehr kategorien
 wenn app fertig:
 möglichkeit eine csv datei hochzuladen
 um automatisch die finanzen zu übernehmen
+
+bei update von wiederholenden Finanzen:
+  erst alle finanzen löschen und dann neu erzeugen

@@ -85,6 +85,7 @@ export default function MainPage({ session }) {
   }
 
   async function getFinances() {
+    console.log("getfinances");
     try {
       setLoading(true);
 
@@ -214,6 +215,7 @@ export default function MainPage({ session }) {
               currentFinanceToAlter={currentFinanceToAlter}
               closeAlterFinanceFormHandler={closeAlterFinanceFormHandler}
               getFinances={getFinances}
+              session={session}
             />
           </motion.div>
         )}
