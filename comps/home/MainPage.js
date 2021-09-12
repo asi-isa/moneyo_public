@@ -24,16 +24,22 @@ import CurrentBalanceCard from "../finance/CurrentBalanceCard";
 import thousandPoint from "../../utils/thousandPoint";
 import jsDateToHtmlDate from "../../utils/jsDateToHtmlDate";
 import add from "date-fns/add";
+import getBalanceUntilDate from "../../utils/getBalanceUntilDate";
+import getBalancesForAllDates from "../../utils/getBalancesForAllDates";
+import getTodayAsString from "../../utils/getTodayAsString";
 
 export default function MainPage({ session }) {
   const today = getToday();
+  const todayAsString = getTodayAsString();
   const currentMonth = new Date().getMonth();
   const [date, setDate] = useState(new Date());
+  const HTML_date = jsDateToHtmlDate(date);
   const [loading, setLoading] = useState(false);
   const [finances, setFinances] = useState(null);
   const [financeDates, setFinanceDate] = useState(null);
   const [financesAtMonth, setFinancesAtMonth] = useState(null);
   const [balance, setBalance] = useState(null);
+  const [allBalances, setAllBalances] = useState(null);
   const [showCalendar, setShowCalendar] = useState(true);
   const [showNewFinanceForm, setShowFinanceForm] = useState(false);
   const [showAlterFinanceForm, setAlterFinanceForm] = useState(false);
@@ -103,6 +109,9 @@ export default function MainPage({ session }) {
 
       if (data) {
         setFinances(data);
+
+        setAllBalances(getBalancesForAllDates(data));
+
         setBalance(getCurrentBalance(data));
 
         // damit aeltere Finanzen nicht als Card angezeigt werden
@@ -222,7 +231,7 @@ export default function MainPage({ session }) {
       </AnimatePresence>
 
       <AnimatePresence>
-        {mountUnmountAnimation && (
+        {mountUnmountAnimation && allBalances && (
           <motion.section
             className={styles.cards}
             variants={variant}
@@ -231,7 +240,7 @@ export default function MainPage({ session }) {
             exit={{ opacity: 0 }}
           >
             <CurrentBalanceCard
-              currentBalance={thousandPoint(balance)}
+              currentBalance={thousandPoint(allBalances[todayAsString])}
               date={today}
             />
 
@@ -241,11 +250,7 @@ export default function MainPage({ session }) {
                   <Card
                     name={finance.name}
                     amount={finance.amount}
-                    expectedBalance={getExpectedBalance(
-                      finance.date,
-                      balance,
-                      financesAtMonth
-                    )}
+                    expectedBalance={allBalances[finance.date]}
                     date={finance.date}
                     currentDate={today}
                     category={finance.category}

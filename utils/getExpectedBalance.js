@@ -10,8 +10,13 @@ function doGetExpectedBalance(date, currentBalance, finances) {
     const finance = finances[index];
     // alle finanzen von heute bis zu dem tag, an dem die neue rechnung fällig wird
     // da in currentBalance bereits die 'alten' Rechnungen enthalten sein sollten
-    if (new Date(finance.date) >= today && new Date(finance.date) <= jsDate)
+    if (new Date(finance.date) > today && new Date(finance.date) <= jsDate) {
       sumOfFinances += finance.amount;
+    }
+    // kleine Optimierung
+    else if (new Date(finance.date) > jsDate) {
+      break;
+    }
   }
   return currentBalance + sumOfFinances;
 }
