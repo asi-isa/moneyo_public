@@ -6,6 +6,7 @@ import { BsArrowRepeat, BsCalendarFill } from "react-icons/bs";
 import { MdAttachMoney } from "react-icons/md";
 
 export default function AlterFinanceForm(props) {
+  // console.log("recurrent_id", props.currentFinanceToAlter.recurrent_id);
   async function alterFinanceHandler(e) {
     e.preventDefault();
     // e.currentTarget.elements.forEach((field) => console.log(field));
@@ -18,10 +19,25 @@ export default function AlterFinanceForm(props) {
     formData["date"] = new Date(formData["date"]);
 
     try {
-      const { data, error } = await supabase
-        .from("finance")
-        .update([formData])
-        .eq("id", props.currentFinanceToAlter.id);
+      let data, error;
+      // update all recurrent finances
+      if (props.currentFinanceToAlter.recurrent_id) {
+        ({ data, error } = await supabase
+          .from("finance")
+          .update([formData])
+          .eq("id", props.currentFinanceToAlter.id)
+          .match({ recurrent_id: props.currentFinanceToAlter.recurrent_id }));
+      } else {
+        ({ data, error } = await supabase
+          .from("finance")
+          .update([formData])
+          .eq("id", props.currentFinanceToAlter.id));
+      }
+
+      // const { data, error } = await supabase
+      //   .from("finance")
+      //   .update([formData])
+      //   .eq("id", props.currentFinanceToAlter.id);
 
       if (error) {
         throw error;
@@ -39,10 +55,19 @@ export default function AlterFinanceForm(props) {
 
   async function deleteFinanceHandler() {
     try {
-      const { data, error } = await supabase
-        .from("finance")
-        .delete()
-        .match({ id: props.currentFinanceToAlter.id });
+      let data, error;
+      // delete all recurrent finances
+      if (props.currentFinanceToAlter.recurrent_id) {
+        ({ data, error } = await supabase
+          .from("finance")
+          .delete()
+          .match({ recurrent_id: props.currentFinanceToAlter.recurrent_id }));
+      } else {
+        ({ data, error } = await supabase
+          .from("finance")
+          .delete()
+          .match({ id: props.currentFinanceToAlter.id }));
+      }
 
       if (error) {
         throw error;
