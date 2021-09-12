@@ -1,12 +1,8 @@
+import add from "date-fns/add";
+
 export default function getNextDate(currentDate, interval) {
-  let nextDate;
-  if (interval === "monthly") {
-    nextDate = new Date(
-      currentDate.getFullYear(),
-      currentDate.getMonth() + 1,
-      currentDate.getDate() + 1, // +1 da sonst Vortag
-      0
-    );
-  }
-  return nextDate;
+  if (interval === "monthly") return add(currentDate, { months: 1 });
+  if (interval === "weekly") return add(currentDate, { weeks: 1 });
+  if (interval === "yearly") return add(currentDate, { years: 1 });
+  if (interval === "halfYearly") return add(currentDate, { months: 6 });
 }

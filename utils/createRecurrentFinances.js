@@ -23,15 +23,18 @@ export default function createRecurrentFinances(firstFinance) {
   recurrentFinances.push(finance);
 
   for (let i = 1; i < numberOfCardsToCreate; i++) {
-    const currentDate = recurrentFinances.at(-1)["date"];
+    // führe erst alle anderen Jobs in queue aus
+    setTimeout(() => {
+      const currentDate = recurrentFinances.at(-1)["date"];
 
-    const nextDate = getNextDate(currentDate, finance["interval"]);
+      const nextDate = getNextDate(currentDate, finance["interval"]);
 
-    // übernehme zunächst alle Eigenschaften und passe nur das neue Datum an
-    const nextFinance = { ...finance };
-    nextFinance["date"] = nextDate;
-    // recurrentFormDataArray.push(formData);
-    recurrentFinances = [...recurrentFinances, nextFinance];
+      // übernehme zunächst alle Eigenschaften und passe nur das neue Datum an
+      const nextFinance = { ...finance };
+      nextFinance["date"] = nextDate;
+      // recurrentFormDataArray.push(formData);
+      recurrentFinances = [...recurrentFinances, nextFinance];
+    }, 0);
   }
 
   return recurrentFinances;

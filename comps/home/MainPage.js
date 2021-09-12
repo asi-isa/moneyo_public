@@ -22,6 +22,8 @@ import getDatesFromObjArr from "../../utils/getDatesFromObjArr";
 import Loader from "../loader/Loader";
 import CurrentBalanceCard from "../finance/CurrentBalanceCard";
 import thousandPoint from "../../utils/thousandPoint";
+import jsDateToHtmlDate from "../../utils/jsDateToHtmlDate";
+import add from "date-fns/add";
 
 export default function MainPage({ session }) {
   const today = getToday();
@@ -90,9 +92,9 @@ export default function MainPage({ session }) {
         .from("finance")
         .select("*")
         .eq("user_id", session.user.id)
-        // .gte("date", getTodayAsString())
-        .order("date", { ascending: true })
-        .limit(100);
+        .lte("date", jsDateToHtmlDate(add(today, { years: 3 })))
+        .order("date", { ascending: true });
+      // .limit(100);
 
       if (error && status !== 406) {
         throw error;
