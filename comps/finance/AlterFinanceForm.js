@@ -17,11 +17,6 @@ export default function AlterFinanceForm(props) {
       (field) => field.id && (formData[field.id] = field.value)
     );
 
-    // formData["date"] = new Date(formData["date"]);
-
-    console.log("props.currentFinanceToAlter", props.currentFinanceToAlter);
-    console.log("formdata", formData);
-
     try {
       let data, error;
       // update all recurrent finances
@@ -36,17 +31,28 @@ export default function AlterFinanceForm(props) {
         ({ data, error } = await supabase
           .from("finance")
           .insert(createRecurrentFinances(formData)));
+
+        // // geht zwar schon, die Oberfläche wird aber zu früh angepasst
+        // // dh die Veränderung wird nicht angezeigt
+        // const deleteOldRecurrentFinances = supabase
+        //   .from("finance")
+        //   .delete()
+        //   .match({ recurrent_id: props.currentFinanceToAlter.recurrent_id });
+        // // insert new 'updated' finances
+        // const insertUpdatedFinances = supabase
+        //   .from("finance")
+        //   .insert(createRecurrentFinances(formData));
+
+        // ({ data, error } = await Promise.all([
+        //   deleteOldRecurrentFinances,
+        //   insertUpdatedFinances,
+        // ]));
       } else {
         ({ data, error } = await supabase
           .from("finance")
           .update([formData])
           .eq("id", props.currentFinanceToAlter.id));
       }
-
-      // const { data, error } = await supabase
-      //   .from("finance")
-      //   .update([formData])
-      //   .eq("id", props.currentFinanceToAlter.id);
 
       if (error) {
         throw error;
