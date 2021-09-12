@@ -1,29 +1,33 @@
+import { differenceInMilliseconds } from "date-fns";
 import createUUID from "./createUUID";
 import getAvgIntervalInMilliSeconds from "./getAvgIntervalInMilliSeconds";
 import getNextDate from "./getNextDate";
 
 export default function createRecurrentFinances(firstFinance) {
+  console.log("firstFinance", firstFinance);
   // eigtl. nicht unbedingt nötig
   const finance = { ...firstFinance };
+  // remove 'old' pk
+  delete finance["id"];
   let recurrentFinances = [];
 
-  const recurrentUUID = createUUID();
-  finance["recurrent_id"] = recurrentUUID;
+  finance["recurrent_id"] = createUUID();
 
   // berechne wie viele Finanzen erstellt werden müssen
-  const recurrentUntil = new Date(finance["recurrent_until_date"]);
-  const timeUntilInMilliSeconds = recurrentUntil - finance["date"];
   const avgIntervalInMilliSeconds = getAvgIntervalInMilliSeconds(
     finance["interval"]
   );
+  const endDate = new Date(finance["recurrent_until_date"]);
+  const beginDate = new Date(finance["date"]);
+  const diffInMilliSeconds = differenceInMilliseconds(endDate, beginDate);
   const numberOfCardsToCreate = Math.ceil(
-    timeUntilInMilliSeconds / avgIntervalInMilliSeconds
+    diffInMilliSeconds / avgIntervalInMilliSeconds
   );
 
   recurrentFinances.push(finance);
 
   for (let i = 1; i < numberOfCardsToCreate; i++) {
-    const currentDate = recurrentFinances.at(-1)["date"];
+    const currentDate = new Date(recurrentFinances.at(-1)["date"]);
 
     const nextDate = getNextDate(currentDate, finance["interval"]);
 

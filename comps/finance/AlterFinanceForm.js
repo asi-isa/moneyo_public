@@ -32,7 +32,7 @@ export default function AlterFinanceForm(props) {
           .from("finance")
           .delete()
           .match({ recurrent_id: props.currentFinanceToAlter.recurrent_id }));
-        // insert new finances
+        // insert new 'updated' finances
         ({ data, error } = await supabase
           .from("finance")
           .insert(createRecurrentFinances(formData)));
