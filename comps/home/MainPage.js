@@ -88,7 +88,7 @@ export default function MainPage({ session }) {
         .from("finance")
         .select("*")
         .eq("user_id", session.user.id)
-        .lte("date", jsDateToHtmlDate(add(today, { years: 3 })))
+        // .lte("date", jsDateToHtmlDate(add(today, { years: 3 })))
         .order("date", { ascending: true });
       // .limit(100);
 
@@ -220,7 +220,7 @@ export default function MainPage({ session }) {
       </AnimatePresence>
 
       <AnimatePresence>
-        {mountUnmountAnimation && allBalances && (
+        {mountUnmountAnimation && (
           <motion.section
             className={styles.cards}
             variants={variant}
@@ -233,7 +233,8 @@ export default function MainPage({ session }) {
               date={today}
             />
 
-            {financesAtMonth &&
+            {allBalances &&
+              financesAtMonth &&
               financesAtMonth.map((finance) => (
                 <motion.div key={finance.id} variants={item}>
                   <Card
