@@ -7,5 +7,6 @@ export default function getBalancesForAllDates(finances) {
     allBalances[finance.date] =
       finance.amount + allBalances[previousFinance.date];
   }
+  console.log(allBalances);
   return allBalances;
 }

@@ -1,14 +1,8 @@
 import styles from "./MainPage.module.css";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import {
-  BsPlusSquare,
-  BsCalendar,
-  BsPeopleCircle,
-  BsPieChartFill,
-} from "react-icons/bs";
+import { BsPlusSquare, BsCalendar, BsPeopleCircle } from "react-icons/bs";
 import Calendar from "../calendar/Calendar";
-import getMonthName from "../../utils/getMonthName";
 import getCurrentBalance from "../../utils/getCurrentBalance";
 import { AnimatePresence, motion } from "framer-motion";
 import { supabase } from "../../db/supabase";
@@ -16,24 +10,19 @@ import NewFinanceForm from "../finance/NewFinanceForm";
 import AlterFinanceForm from "../finance/AlterFinanceForm";
 import getToday from "../../utils/getToday";
 import Card from "../finance/Card";
-import getExpectedBalance from "../../utils/getExpectedBalance";
-import DoughnutChart from "../finance/DoughnutChart";
 import getDatesFromObjArr from "../../utils/getDatesFromObjArr";
 import Loader from "../loader/Loader";
 import CurrentBalanceCard from "../finance/CurrentBalanceCard";
 import thousandPoint from "../../utils/thousandPoint";
 import jsDateToHtmlDate from "../../utils/jsDateToHtmlDate";
 import add from "date-fns/add";
-import getBalanceUntilDate from "../../utils/getBalanceUntilDate";
 import getBalancesForAllDates from "../../utils/getBalancesForAllDates";
 import getTodayAsString from "../../utils/getTodayAsString";
 
 export default function MainPage({ session }) {
   const today = getToday();
-  const todayAsString = getTodayAsString();
   const currentMonth = new Date().getMonth();
   const [date, setDate] = useState(new Date());
-  const HTML_date = jsDateToHtmlDate(date);
   const [loading, setLoading] = useState(false);
   const [finances, setFinances] = useState(null);
   const [financeDates, setFinanceDate] = useState(null);
@@ -240,7 +229,7 @@ export default function MainPage({ session }) {
             exit={{ opacity: 0 }}
           >
             <CurrentBalanceCard
-              currentBalance={thousandPoint(allBalances[todayAsString])}
+              currentBalance={thousandPoint(balance)}
               date={today}
             />
 
