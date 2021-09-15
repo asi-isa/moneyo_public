@@ -38,7 +38,7 @@ export default function Signup() {
         password,
       });
 
-      if (error !== 406) {
+      if (error) {
         throw error;
       }
 
