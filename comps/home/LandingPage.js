@@ -30,7 +30,7 @@ export default function LandingPage() {
         params={{
           particles: {
             number: {
-              value: 160,
+              value: 120,
               density: {
                 enable: false,
               },

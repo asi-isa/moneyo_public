@@ -19,6 +19,8 @@ export default function Home() {
   }, [session]);
 
   return (
-    <main>{session ? <MainPage session={session} /> : <LandingPage />}</main>
+    <main className={styles.main}>
+      {session ? <MainPage session={session} /> : <LandingPage />}
+    </main>
   );
 }
