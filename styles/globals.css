@@ -11,21 +11,22 @@
   --main-color-30: rgba(255, 211, 29, 0.3);
 }
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* background-color: var(--bg-color); */
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
 svg {
@@ -40,10 +41,4 @@ svg {
   display: flex;
   justify-content: space-around;
   gap: 1rem;
-}
-
-#learn_more {
-  height: 100vh;
-  width: 100vw;
-  background-color: red;
 }
