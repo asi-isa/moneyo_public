@@ -12,10 +12,9 @@ export default function LearnMore() {
           moneyo is a open source financial planner.
         </h5>
         <p className={styles.description}>
-          it allows us to quickly overview our finances. and with that you get
+          it allows us to quickly overview our finances. and with that we get
           answers to questions like:
         </p>
-
         <p className={styles.description}>- when the next bill is due?</p>
         <p className={styles.description}>
           - how much money I will have in 3 months?
@@ -27,8 +26,17 @@ export default function LearnMore() {
         <p className={styles.description}>
           - and associated with that, by when I have to go to work again? ;)
         </p>
+        <p className={`${styles.description} mg-top-2rem`}>
+          it will look something like this, hopefully :)
+        </p>
 
-        <p className={styles.description}>
+        <img
+          src="/images/screenshot.png"
+          alt="moneyo screenshot"
+          className={styles.screenshot}
+        />
+
+        <p className={`${styles.description} mg-top-2rem`}>
           without further ado, lets create an account.
         </p>
 

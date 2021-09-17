@@ -29,6 +29,10 @@ a {
   text-decoration: none;
 }
 
+img {
+  max-width: 100%;
+}
+
 svg {
   transform: scale(1.7);
 }
@@ -41,4 +45,7 @@ svg {
   display: flex;
   justify-content: space-around;
   gap: 1rem;
+}
+.mg-top-2rem {
+  margin-top: 2rem;
 }
