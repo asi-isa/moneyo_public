@@ -37,7 +37,7 @@ export default function LearnMore() {
         />
 
         <p className={`${styles.description} mg-top-2rem`}>
-          without further ado, lets create an account.
+          without further ado, lets create ourselves an account.
         </p>
 
         <Link href="/">

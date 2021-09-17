@@ -33,6 +33,8 @@
   border-radius: 0.5rem;
   padding: 0.5rem 1.3rem;
   margin-top: 2rem;
+  margin-bottom: 1rem;
+  margin-right: 0.5rem;
   align-self: flex-end;
 }
 .btn:hover,
