@@ -5,6 +5,12 @@
   z-index: -1;
 }
 
+@media (min-width: 769px) {
+  .particles {
+    display: none;
+  }
+}
+
 .home {
   padding-top: 5rem;
   color: var(--accent-color);
@@ -14,7 +20,6 @@
   justify-content: space-between;
   width: 100%;
   min-height: 100vh;
-  /* z-index: 2; */
 }
 
 .header {

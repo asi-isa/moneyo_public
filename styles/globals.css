@@ -24,6 +24,12 @@ body {
   /* background-color: var(--bg-color); */
 }
 
+@media (min-width: 769px) {
+  body {
+    background-color: var(--bg-color);
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;
