@@ -12,6 +12,7 @@ import { useState } from "react";
 import { supabase } from "../../db/supabase";
 import Loader from "../../comps/loader/Loader";
 import Info from "../../comps/info/Info";
+import Progressbar from "../../comps/progressbar/Progressbar";
 
 export default function Signin() {
   const router = useRouter();
@@ -66,69 +67,74 @@ export default function Signin() {
   }
 
   return (
-    <section className={styles.signin}>
-      <div className={styles.header}>
-        <Link href="/">
-          <a className={styles.goback}>
-            <IoIosArrowBack />
-          </a>
-        </Link>
-        <h1 className={styles.title}>log In</h1>
-      </div>
-
-      <div className={styles.auth_section}>
-        <p className={styles.faded}>log in with one of the following options</p>
-        <div className={styles.oauths}>
-          <button className={styles.oauth} onClick={toggleInfo}>
-            <AiOutlineGoogle />
-          </button>
-          <button className={styles.oauth} onClick={toggleInfo}>
-            <AiFillApple />
-          </button>
+    <>
+      {/* <Progressbar bars={3} progress={2} /> */}
+      <section className={styles.signin}>
+        <div className={styles.header}>
+          <Link href="/">
+            <a className={styles.goback}>
+              <IoIosArrowBack />
+            </a>
+          </Link>
+          <h1 className={styles.title}>log In</h1>
         </div>
-        <div className={styles.oauths}>
-          <button className={styles.oauth} onClick={gitHubAuth}>
-            <AiOutlineGithub />
-          </button>
-          <button className={styles.oauth} onClick={toggleInfo}>
-            <AiFillFacebook />
-          </button>
+
+        <div className={styles.auth_section}>
+          <p className={styles.faded}>
+            log in with one of the following options
+          </p>
+          <div className={styles.oauths}>
+            <button className={styles.oauth} onClick={toggleInfo}>
+              <AiOutlineGoogle />
+            </button>
+            <button className={styles.oauth} onClick={toggleInfo}>
+              <AiFillApple />
+            </button>
+          </div>
+          <div className={styles.oauths}>
+            <button className={styles.oauth} onClick={gitHubAuth}>
+              <AiOutlineGithub />
+            </button>
+            <button className={styles.oauth} onClick={toggleInfo}>
+              <AiFillFacebook />
+            </button>
+          </div>
         </div>
-      </div>
 
-      <form className={styles.form} onSubmit={loginHandler}>
-        <p className={styles.faded}>or log in with your email</p>
-        <label htmlFor="email">email</label>
-        <input
-          type="email"
-          id="email"
-          required
-          placeholder="Enter your email"
-        />
-        <label htmlFor="password">password</label>
-        <input
-          type="password"
-          id="password"
-          required
-          placeholder="Enter your password"
-        />
-        <button className={styles.btn}>log in</button>
-      </form>
+        <form className={styles.form} onSubmit={loginHandler}>
+          <p className={styles.faded}>or log in with your email</p>
+          <label htmlFor="email">email</label>
+          <input
+            type="email"
+            id="email"
+            required
+            placeholder="Enter your email"
+          />
+          <label htmlFor="password">password</label>
+          <input
+            type="password"
+            id="password"
+            required
+            placeholder="Enter your password"
+          />
+          <button className={styles.btn}>log in</button>
+        </form>
 
-      <p className={styles.faded}>
-        dont have an account?{" "}
-        <Link href="/account/signup">
-          <a className={styles.signup_link}>sign up</a>
-        </Link>
-      </p>
-      {loading && <Loader />}
-      {showInfo && (
-        <Info
-          headerText="be patient :)"
-          text="currently we only support GitHub as a authentication method"
-          closeInfo={toggleInfo}
-        />
-      )}
-    </section>
+        <p className={styles.faded}>
+          dont have an account?{" "}
+          <Link href="/account/signup">
+            <a className={styles.signup_link}>sign up</a>
+          </Link>
+        </p>
+        {loading && <Loader />}
+        {showInfo && (
+          <Info
+            headerText="be patient :)"
+            text="currently we only support GitHub as a authentication method"
+            closeInfo={toggleInfo}
+          />
+        )}
+      </section>
+    </>
   );
 }

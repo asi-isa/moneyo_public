@@ -1,49 +1,10 @@
 .alert {
-  background-color: black;
-  color: var(--accent-color);
-  border: 2px solid var(--accent-color-30);
-  padding: 1rem;
-  border-radius: 0.5rem;
-  position: absolute;
-  z-index: 99999;
+  position: sticky;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 30ch;
-  transition: border 350ms ease-in;
-}
-
-.alert:hover,
-.alert:focus,
-.alert:active {
-  border: 2px solid var(--accent-color);
-}
-
-.title {
-  margin-bottom: 1.5rem;
-}
-
-.info {
-  line-height: 1.4;
-}
-
-.bold {
-  font-weight: 900;
-}
-/* .bold_link {
-  font-weight: 900;
-  position: relative;
-}
-.bold_link::after {
-  position: absolute;
-  content: "";
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: var(--accent-dark);
-} */
-
-.thanks {
-  margin-top: 1rem;
+  padding: 1rem;
+  border: 2px solid var(--accent-color-30);
+  border-radius: 0.5rem;
+  z-index: 999;
 }

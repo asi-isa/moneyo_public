@@ -14,5 +14,6 @@
 }
 
 .fill {
+  border: 1px solid var(--bg-color);
   background-color: var(--accent-color);
 }

@@ -40,8 +40,8 @@ export default function LearnMore() {
           without further ado, lets create ourselves an account.
         </p>
 
-        <Link href="/">
-          <a className={styles.btn}>next</a>
+        <Link href="/account/signup">
+          <a className={styles.btn}>sign up</a>
         </Link>
       </section>
     </>

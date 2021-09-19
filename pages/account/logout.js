@@ -2,7 +2,7 @@ import styles from "../../styles/Logout.module.css";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { supabase } from "../../db/supabase";
-import Alert from "../../comps/alert/Alert";
+import AlertTimer from "../../comps/alert/AlertTimer";
 import Loader from "../../comps/loader/Loader";
 import { IoIosArrowBack } from "react-icons/io";
 
@@ -44,7 +44,11 @@ export default function Logout() {
       </div>
 
       {signoutSuccess && (
-        <Alert counterBeginsAt={10} text="" footertext="have a nice day :)" />
+        <AlertTimer
+          counterBeginsAt={5}
+          text=""
+          footertext="have a nice day :)"
+        />
       )}
       {loading && <Loader />}
     </section>
