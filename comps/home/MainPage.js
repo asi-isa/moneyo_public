@@ -15,6 +15,7 @@ import Loader from "../loader/Loader";
 import CurrentBalanceCard from "../finance/CurrentBalanceCard";
 import thousandPoint from "../../utils/thousandPoint";
 import getBalancesForAllDates from "../../utils/getBalancesForAllDates";
+import InitBalanceForm from "../finance/InitBalanceForm";
 
 export default function MainPage({ session }) {
   const today = getToday();
@@ -77,7 +78,7 @@ export default function MainPage({ session }) {
     if (session && initBalance === null) getInitBalance();
     // es wurden noch keine Anfangsbestände gesetzt
     if (initBalance === 0) toggleInitBalanceForm();
-  }, [session]);
+  }, [session, initBalance]);
 
   function getFinancesAtMonth(month) {
     const financesAtMonth = finances.filter(
@@ -98,8 +99,7 @@ export default function MainPage({ session }) {
       if (error && status !== 406) throw error;
 
       if (data) {
-        const { init_balance } = data[0];
-        console.log("init_balance", init_balance);
+        setInitBalance(data[0]["init_balance"]);
       }
     } catch (error) {
       alert(error.message);
@@ -128,7 +128,7 @@ export default function MainPage({ session }) {
 
         setAllBalances(getBalancesForAllDates(data));
 
-        setBalance(getCurrentBalance(data));
+        setBalance(initBalance + getCurrentBalance(data));
 
         // damit aeltere Finanzen nicht als Card angezeigt werden
         setFinancesAtMonth(
@@ -267,7 +267,7 @@ export default function MainPage({ session }) {
                   <Card
                     name={finance.name}
                     amount={finance.amount}
-                    expectedBalance={allBalances[finance.date]}
+                    expectedBalance={initBalance + allBalances[finance.date]}
                     date={finance.date}
                     currentDate={today}
                     category={finance.category}
@@ -286,7 +286,12 @@ export default function MainPage({ session }) {
       </AnimatePresence>
 
       {loading && <Loader />}
-      {showInitBalanceForm && console.log("show")}
+      {showInitBalanceForm && (
+        <InitBalanceForm
+          session={session}
+          closeFormHandler={toggleInitBalanceForm}
+        />
+      )}
     </section>
   );
 }
