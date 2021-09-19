@@ -14,10 +14,7 @@ import getDatesFromObjArr from "../../utils/getDatesFromObjArr";
 import Loader from "../loader/Loader";
 import CurrentBalanceCard from "../finance/CurrentBalanceCard";
 import thousandPoint from "../../utils/thousandPoint";
-import jsDateToHtmlDate from "../../utils/jsDateToHtmlDate";
-import add from "date-fns/add";
 import getBalancesForAllDates from "../../utils/getBalancesForAllDates";
-import getTodayAsString from "../../utils/getTodayAsString";
 
 export default function MainPage({ session }) {
   const today = getToday();
@@ -28,6 +25,8 @@ export default function MainPage({ session }) {
   const [financeDates, setFinanceDate] = useState(null);
   const [financesAtMonth, setFinancesAtMonth] = useState(null);
   const [balance, setBalance] = useState(null);
+  const [initBalance, setInitBalance] = useState(null);
+  const [showInitBalanceForm, setShowInitBalanceForm] = useState(false);
   const [allBalances, setAllBalances] = useState(null);
   const [showCalendar, setShowCalendar] = useState(true);
   const [showNewFinanceForm, setShowFinanceForm] = useState(false);
@@ -68,8 +67,16 @@ export default function MainPage({ session }) {
     }, 100);
   }
 
+  function toggleInitBalanceForm() {
+    setShowInitBalanceForm(!showInitBalanceForm);
+  }
+
   useEffect(() => {
     if (session) getFinances();
+
+    if (session && initBalance === null) getInitBalance();
+    // es wurden noch keine Anfangsbestände gesetzt
+    if (initBalance === 0) toggleInitBalanceForm();
   }, [session]);
 
   function getFinancesAtMonth(month) {
@@ -77,6 +84,28 @@ export default function MainPage({ session }) {
       (finance) => new Date(finance.date).getMonth() >= month
     );
     return financesAtMonth;
+  }
+
+  async function getInitBalance() {
+    try {
+      setLoading(true);
+
+      let { data, error, status } = await supabase
+        .from("finance_user")
+        .select("init_balance")
+        .eq("id", session.user.id);
+
+      if (error && status !== 406) throw error;
+
+      if (data) {
+        const { init_balance } = data[0];
+        console.log("init_balance", init_balance);
+      }
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setLoading(false);
+    }
   }
 
   async function getFinances() {
@@ -92,9 +121,7 @@ export default function MainPage({ session }) {
         .order("date", { ascending: true });
       // .limit(100);
 
-      if (error && status !== 406) {
-        throw error;
-      }
+      if (error && status !== 406) throw error;
 
       if (data) {
         setFinances(data);
@@ -259,6 +286,7 @@ export default function MainPage({ session }) {
       </AnimatePresence>
 
       {loading && <Loader />}
+      {showInitBalanceForm && console.log("show")}
     </section>
   );
 }
