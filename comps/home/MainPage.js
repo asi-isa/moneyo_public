@@ -88,6 +88,7 @@ export default function MainPage({ session }) {
   }
 
   async function getInitBalance() {
+    console.log("getInitBalance");
     try {
       setLoading(true);
 

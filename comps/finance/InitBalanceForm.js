@@ -7,16 +7,7 @@ export default function InitBalanceForm({ session, closeFormHandler }) {
   async function submitHandler(e) {
     e.preventDefault();
 
-    const formData = {};
-
-    Array.from(e.currentTarget.elements).forEach(
-      (field) => field.id && (formData[field.id] = field.value)
-    );
-
-    const init_balance =
-      +formData["bankAssetAmount"] + +formData["liquidAssetAmount"];
-
-    console.log(session);
+    const init_balance = +e.currentTarget.elements[0].value;
 
     try {
       let { data, error } = await supabase
@@ -26,9 +17,9 @@ export default function InitBalanceForm({ session, closeFormHandler }) {
 
       if (error) throw error;
 
-      // if (data) {
-      //   getFinances();
-      // }
+      if (data) {
+        getFinances();
+      }
     } catch (error) {
       alert(error.message);
     } finally {
@@ -41,34 +32,26 @@ export default function InitBalanceForm({ session, closeFormHandler }) {
       <div className={styles.modal}></div>
       <form onSubmit={submitHandler} className={styles.form}>
         <div className={styles.form_header}>
-          <h2>Init Balance</h2>
+          <h2>initial balance</h2>
           <AiOutlineClose className={styles.close} onClick={closeFormHandler} />
         </div>
 
-        <input type="text" id="bankAssets" required placeholder="bank assets" />
-        <label htmlFor="bankAssetAmount" className={styles.form_input_label}>
+        <p className={styles.info}>
+          before we begin lets capture our current balance
+        </p>
+
+        <label htmlFor="initialBalance" className={styles.form_input_label}>
           <MdAttachMoney />
           <input
             type="number"
-            id="bankAssetAmount"
+            id="initialBalance"
             required
             placeholder="amount"
             className={styles.form_input}
           />
         </label>
 
-        <input type="text" id="liquidAssets" placeholder="liquid assets" />
-        <label htmlFor="liquidAssetAmount" className={styles.form_input_label}>
-          <MdAttachMoney />
-          <input
-            type="number"
-            id="liquidAssetAmount"
-            placeholder="amount"
-            className={styles.form_input}
-          />
-        </label>
-
-        <button className={styles.btn}>Add</button>
+        <button className={styles.btn}>add</button>
       </form>
     </>
   );
