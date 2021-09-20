@@ -291,6 +291,7 @@ export default function MainPage({ session }) {
         <InitBalanceForm
           session={session}
           closeFormHandler={toggleInitBalanceForm}
+          getInitBalance={getInitBalance}
         />
       )}
     </section>

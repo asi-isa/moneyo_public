@@ -3,7 +3,11 @@ import { AiOutlineClose } from "react-icons/ai";
 import { MdAttachMoney } from "react-icons/md";
 import { supabase } from "../../db/supabase";
 
-export default function InitBalanceForm({ session, closeFormHandler }) {
+export default function InitBalanceForm({
+  session,
+  closeFormHandler,
+  getInitBalance,
+}) {
   async function submitHandler(e) {
     e.preventDefault();
 
@@ -18,7 +22,7 @@ export default function InitBalanceForm({ session, closeFormHandler }) {
       if (error) throw error;
 
       if (data) {
-        getFinances();
+        getInitBalance();
       }
     } catch (error) {
       alert(error.message);
