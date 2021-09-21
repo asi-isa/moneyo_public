@@ -3,13 +3,8 @@ mit mehr funktionalitäten? welche?
 name, pw, email ändern
 finanzanalyse optionen
 
-recurrent funktionalitäten einführen
-
-
 
 email verification einschalten
-
-docs erstellen mit how to use
 
 mehr kategorien
 
@@ -17,6 +12,3 @@ mehr kategorien
 wenn app fertig:
 möglichkeit eine csv datei hochzuladen
 um automatisch die finanzen zu übernehmen
-
-bei update von wiederholenden Finanzen:
-  erst alle finanzen löschen und dann neu erzeugen
