@@ -1,0 +1,71 @@
+.modal {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.exp_or_inc {
+  padding: 2rem;
+  background-color: var(--bg-color);
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  width: 90vw;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2rem;
+  color: var(--accent-color);
+}
+
+.close {
+  cursor: pointer;
+}
+
+.btn {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: var(--bg-color);
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color-30);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+.btn_exp {
+  color: var(--negative);
+  border-color: var(--negative-30);
+}
+.btn_exp:hover,
+.btn_exp:active,
+.btn_exp:focus {
+  border-color: var(--negative);
+}
+.btn_inc {
+  color: var(--positive);
+  border-color: var(--positive-30);
+}
+.btn_inc:hover,
+.btn_inc:active,
+.btn_inc:focus {
+  border-color: var(--positive);
+}
+
+.display_none {
+  display: none;
+}

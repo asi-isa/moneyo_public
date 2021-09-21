@@ -15,6 +15,7 @@ export default function NewFinanceForm({
   getFinances,
   selectedDate,
   session,
+  income,
 }) {
   const dateAsString = jsDateToHtmlDate(selectedDate);
   const dateAsStringInThreeYears = jsDateToHtmlDate(
@@ -35,6 +36,9 @@ export default function NewFinanceForm({
     Array.from(e.currentTarget.elements).forEach(
       (field) => field.id && (formData[field.id] = field.value)
     );
+
+    // es wird eine ausgabe erfasst => negatives Vorzeichen
+    if (!income) formData["amount"] = formData["amount"] * -1;
 
     formData["date"] = new Date(formData["date"]);
     formData["user_id"] = session.user.id;
@@ -79,24 +83,20 @@ export default function NewFinanceForm({
       <div className={styles.modal}></div>
       <form className={styles.form} onSubmit={newFinanceHandler}>
         <div className={styles.form_header}>
-          <h2>New Finance</h2>
+          <h2>add new {income ? "income" : "expense"}</h2>
           <AiOutlineClose className={styles.close} onClick={closeFormHandler} />
         </div>
 
-        <input
-          type="text"
-          id="name"
-          required
-          placeholder="rent, salary, books ..."
-        />
+        <input type="text" id="name" required placeholder="what?" />
 
         <label htmlFor="amount" className={styles.form_input_label}>
           <MdAttachMoney />
           <input
             type="number"
             id="amount"
+            min={0}
             required
-            placeholder="amount"
+            placeholder="how much?"
             className={styles.form_input}
           />
         </label>

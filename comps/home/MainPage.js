@@ -16,6 +16,7 @@ import CurrentBalanceCard from "../finance/CurrentBalanceCard";
 import thousandPoint from "../../utils/thousandPoint";
 import getBalancesForAllDates from "../../utils/getBalancesForAllDates";
 import InitBalanceForm from "../finance/InitBalanceForm";
+import ExpenseOrIncome from "../finance/ExpenseOrIncome";
 
 export default function MainPage({ session }) {
   const today = getToday();
@@ -30,6 +31,7 @@ export default function MainPage({ session }) {
   const [showInitBalanceForm, setShowInitBalanceForm] = useState(false);
   const [allBalances, setAllBalances] = useState(null);
   const [showCalendar, setShowCalendar] = useState(true);
+  const [showExpenseOrIncome, setShowExpenseOrIncome] = useState(false);
   const [showNewFinanceForm, setShowFinanceForm] = useState(false);
   const [showAlterFinanceForm, setAlterFinanceForm] = useState(false);
   const [currentFinanceToAlter, setCurrentFinanceToAlter] = useState(null);
@@ -55,6 +57,10 @@ export default function MainPage({ session }) {
   function showAlterFinanceFormHandler(currentFinance) {
     setCurrentFinanceToAlter(currentFinance);
     setAlterFinanceForm(true);
+  }
+  function toggleExpenseOrIncome() {
+    console.log("fire");
+    setShowExpenseOrIncome(!showExpenseOrIncome);
   }
 
   function closeAlterFinanceFormHandler() {
@@ -191,9 +197,13 @@ export default function MainPage({ session }) {
         <BsCalendar onClick={toggleCalendar} className={styles.pointer} />
 
         <BsPlusSquare
-          onClick={toggleNewFinanceForm}
+          onClick={toggleExpenseOrIncome}
           className={styles.pointer}
         />
+        {/* <BsPlusSquare
+          onClick={toggleNewFinanceForm}
+          className={styles.pointer}
+        /> */}
       </header>
 
       <AnimatePresence>
@@ -211,6 +221,24 @@ export default function MainPage({ session }) {
       </AnimatePresence>
 
       <AnimatePresence>
+        {showExpenseOrIncome && (
+          <motion.div
+            className={styles.center_content}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            <ExpenseOrIncome
+              closeHandler={toggleExpenseOrIncome}
+              selectedDate={date}
+              getFinances={getFinances}
+              session={session}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {/* <AnimatePresence>
         {showNewFinanceForm && (
           <motion.div
             className={styles.center_content}
@@ -227,7 +255,7 @@ export default function MainPage({ session }) {
             />
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
 
       <AnimatePresence>
         {showAlterFinanceForm && (

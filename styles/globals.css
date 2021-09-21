@@ -9,6 +9,10 @@
   --bg-color-30: rgba(0, 0, 0, 0.3);
   --main-color: #ffd31d;
   --main-color-30: rgba(255, 211, 29, 0.3);
+  --negative: #7d1935;
+  --negative-30: rgba(125, 25, 53, 0.3);
+  --positive: #7fc8a9;
+  --positive-30: rgba(127, 200, 169, 0.3);
 }
 
 * {
