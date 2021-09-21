@@ -18,7 +18,6 @@ export default function Calendar({ getSelectedDate, dates }) {
 
   // info for parent
   useEffect(() => {
-    //// user switched month => set date to null, so it can be catched
     // user switched month => set date to first of that new month
     if (selectedDay === -1) {
       getSelectedDate(year, month, 1);

@@ -6,7 +6,6 @@ import Calendar from "../calendar/Calendar";
 import getCurrentBalance from "../../utils/getCurrentBalance";
 import { AnimatePresence, motion } from "framer-motion";
 import { supabase } from "../../db/supabase";
-import NewFinanceForm from "../finance/NewFinanceForm";
 import AlterFinanceForm from "../finance/AlterFinanceForm";
 import getToday from "../../utils/getToday";
 import Card from "../finance/Card";

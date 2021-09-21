@@ -8,7 +8,7 @@ export default function AlertTimer({ counterBeginsAt, text, footertext }) {
 
   useEffect(() => {
     const timeoutID = setTimeout(() => {
-      if (counter > 0) setCounter(counter - 1); // if () um das anzeigen von negativen Werten zu verhindern
+      if (counter > 0) setCounter(counter - 1); // if (...) um das anzeigen von negativen Werten zu verhindern
       if (counter === 0) router.push("/");
     }, 1000);
 

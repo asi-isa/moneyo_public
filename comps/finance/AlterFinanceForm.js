@@ -32,8 +32,8 @@ export default function AlterFinanceForm(props) {
           .from("finance")
           .insert(createRecurrentFinances(formData)));
 
-        // // geht zwar schon, die Oberfläche wird aber zu früh angepasst
-        // // dh die Veränderung wird nicht angezeigt
+        // //  die Oberfläche wird zu früh angepasst
+        // // dh die Veränderungen werden nicht angezeigt
         // const deleteOldRecurrentFinances = supabase
         //   .from("finance")
         //   .delete()
