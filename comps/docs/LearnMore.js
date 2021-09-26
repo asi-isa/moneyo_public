@@ -20,7 +20,7 @@ export default function LearnMore() {
           - how much money I will have in 3 months?
         </p>
         <p className={styles.description}>
-          - should I buy this in one pay, with instalments, or not at all?
+          - should I buy this in one pay, with installments, or not at all?
         </p>
         <p className={styles.description}>- how long will my savings last?</p>
         <p className={styles.description}>
