@@ -5,7 +5,7 @@ import { AiTwotoneFire } from "react-icons/ai";
 
 export default function LandingPage() {
   return (
-    <div className={styles.lp}>
+    <>
       <section className={styles.home}>
         <div className={styles.header}>
           <h1 className={styles.title}>moneyo</h1>
@@ -25,61 +25,62 @@ export default function LandingPage() {
           made with <AiTwotoneFire /> by{" "}
           <a className={styles.isatech}>isa_tech</a>
         </article>
-      </section>
-      <Particles
-        className={styles.particles}
-        params={{
-          particles: {
-            number: {
-              value: 120,
-              density: {
+
+        <Particles
+          className={styles.particles}
+          params={{
+            particles: {
+              number: {
+                value: 120,
+                density: {
+                  enable: false,
+                },
+              },
+              size: {
+                value: 3,
+                random: true,
+                anim: {
+                  speed: 4,
+                  size_min: 0.3,
+                },
+              },
+              line_linked: {
                 enable: false,
               },
-            },
-            size: {
-              value: 3,
-              random: true,
-              anim: {
-                speed: 4,
-                size_min: 0.3,
+              move: {
+                random: true,
+                speed: 1,
+                direction: "top",
+                out_mode: "out",
               },
             },
-            line_linked: {
-              enable: false,
-            },
-            move: {
-              random: true,
-              speed: 1,
-              direction: "top",
-              out_mode: "out",
-            },
-          },
-          // interactivity: {
-          //   events: {
-          //     onhover: {
-          //       enable: true,
-          //       mode: "bubble",
-          //     },
-          //     onclick: {
-          //       enable: true,
-          //       mode: "repulse",
-          //     },
-          //   },
-          //   modes: {
-          //     bubble: {
-          //       distance: 250,
-          //       duration: 2,
-          //       size: 0,
-          //       opacity: 0,
-          //     },
-          //     repulse: {
-          //       distance: 400,
-          //       duration: 4,
-          //     },
-          //   },
-          // },
-        }}
-      />
-    </div>
+            // interactivity: {
+            //   events: {
+            //     onhover: {
+            //       enable: true,
+            //       mode: "bubble",
+            //     },
+            //     onclick: {
+            //       enable: true,
+            //       mode: "repulse",
+            //     },
+            //   },
+            //   modes: {
+            //     bubble: {
+            //       distance: 250,
+            //       duration: 2,
+            //       size: 0,
+            //       opacity: 0,
+            //     },
+            //     repulse: {
+            //       distance: 400,
+            //       duration: 4,
+            //     },
+            //   },
+            // },
+          }}
+        />
+      </section>
+    </>
   );
 }
