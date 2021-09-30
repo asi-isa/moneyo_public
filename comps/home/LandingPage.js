@@ -5,7 +5,7 @@ import { AiTwotoneFire } from "react-icons/ai";
 
 export default function LandingPage() {
   return (
-    <>
+    <div className={styles.lp}>
       <section className={styles.home}>
         <div className={styles.header}>
           <h1 className={styles.title}>moneyo</h1>
@@ -80,6 +80,6 @@ export default function LandingPage() {
           // },
         }}
       />
-    </>
+    </div>
   );
 }
