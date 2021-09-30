@@ -15,16 +15,16 @@ export default function LearnMore() {
           it allows us to quickly overview our finances. and with that we get
           answers to questions like:
         </p>
-        <p className={styles.description}>- when the next bill is due?</p>
-        <p className={styles.description}>
-          - how much money I will have in 3 months?
+        <p className={styles.question}>when the next bill is due?</p>
+        <p className={styles.question}>
+          how much money I will have in 3 months?
         </p>
-        <p className={styles.description}>
-          - should I buy this in one pay, with installments, or not at all?
+        <p className={styles.question}>
+          should I buy this in one pay, with installments, or not at all?
         </p>
-        <p className={styles.description}>- how long will my savings last?</p>
-        <p className={styles.description}>
-          - and associated with that, by when I have to go to work again? ;)
+        <p className={styles.question}>how long will my savings last?</p>
+        <p className={styles.question}>
+          and associated with that, by when I have to go to work again? ;)
         </p>
         <p className={`${styles.description} mg-top-2rem`}>
           it will look something like this, hopefully :)

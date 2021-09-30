@@ -8,16 +8,24 @@
 }
 
 .title {
-  margin-bottom: 2.5rem;
-  font-size: 1.6rem;
+  margin-bottom: 3rem;
+  font-size: 2.8rem;
 }
 .description_header {
-  font-size: 1rem;
-  margin-bottom: 1.4rem;
+  font-size: 1.6rem;
+  margin-bottom: 1.8rem;
 }
 .description {
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+.question {
+  font-size: 1.2rem;
+  border: 1px solid var(--accent-color-30);
+  border-radius: 0.5rem;
+  padding: 0.6rem;
+  margin-bottom: 1.2rem;
 }
 
 .screenshot {
@@ -36,6 +44,7 @@
   margin-bottom: 1rem;
   margin-right: 0.5rem;
   align-self: flex-end;
+  font-size: 1.3rem;
 }
 .btn:hover,
 .btn:focus,
