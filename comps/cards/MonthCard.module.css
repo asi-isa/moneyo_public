@@ -1,0 +1,6 @@
+.month_card {
+  border: 2px solid var(--accent-color-80);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1.3rem 0;
+}

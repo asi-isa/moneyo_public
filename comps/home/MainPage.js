@@ -16,6 +16,7 @@ import thousandPoint from "../../utils/thousandPoint";
 import getBalancesForAllDates from "../../utils/getBalancesForAllDates";
 import InitBalanceForm from "../finance/InitBalanceForm";
 import ExpenseOrIncome from "../finance/ExpenseOrIncome";
+import getFinanceAndMonthCards from "../../utils/getFinanceAndMonthCards";
 
 export default function MainPage({ session }) {
   const today = getToday();
@@ -35,6 +36,7 @@ export default function MainPage({ session }) {
   const [showAlterFinanceForm, setAlterFinanceForm] = useState(false);
   const [currentFinanceToAlter, setCurrentFinanceToAlter] = useState(null);
   const [mountUnmountAnimation, setMountUnmountAnimation] = useState(true);
+  const [month, setMonth] = useState(null); // Hilfsvar. für das anzeigen von Monatscards
 
   function getSelectedDate(year, month, day) {
     const newDate = new Date(year, month, day);
@@ -290,25 +292,13 @@ export default function MainPage({ session }) {
 
             {allBalances &&
               financesAtMonth &&
-              financesAtMonth.map((finance) => (
-                <motion.div key={finance.id} variants={item}>
-                  <Card
-                    name={finance.name}
-                    amount={finance.amount}
-                    expectedBalance={initBalance + allBalances[finance.date]}
-                    date={finance.date}
-                    currentDate={today}
-                    category={finance.category}
-                    isRecurrent={
-                      finance.interval !== "notRecurrent" ? true : false
-                    }
-                    isRevenue={finance.amount > 0 ? true : false}
-                    key={finance.id}
-                    id={finance.id}
-                    showAlterFinanceFormHandler={showAlterFinanceFormHandler}
-                  />
-                </motion.div>
-              ))}
+              getFinanceAndMonthCards(
+                financesAtMonth,
+                initBalance,
+                allBalances,
+                showAlterFinanceForm,
+                showAlterFinanceFormHandler
+              )}
           </motion.section>
         )}
       </AnimatePresence>
