@@ -17,6 +17,7 @@ import getBalancesForAllDates from "../../utils/getBalancesForAllDates";
 import InitBalanceForm from "../finance/InitBalanceForm";
 import ExpenseOrIncome from "../finance/ExpenseOrIncome";
 import getFinanceAndMonthCards from "../../utils/getFinanceAndMonthCards";
+import getDateAtZero from "../../utils/getDateAtZero";
 
 export default function MainPage({ session }) {
   const today = getToday();
@@ -25,7 +26,7 @@ export default function MainPage({ session }) {
   const [loading, setLoading] = useState(false);
   const [finances, setFinances] = useState(null);
   const [financeDates, setFinanceDate] = useState(null);
-  const [financesAtMonth, setFinancesAtMonth] = useState(null);
+  const [financesToShow, setFinancesToShow] = useState(null);
   const [balance, setBalance] = useState(null);
   const [initBalance, setInitBalance] = useState(null);
   const [showInitBalanceForm, setShowInitBalanceForm] = useState(false);
@@ -41,9 +42,9 @@ export default function MainPage({ session }) {
   function getSelectedDate(year, month, day) {
     const newDate = new Date(year, month, day);
 
-    if (date.getMonth() !== month) {
-      setFinancesAtMonth(getFinancesAtMonth(month));
-    }
+    setFinancesToShow(
+      finances.filter((finance) => getDateAtZero(finance.date) >= newDate)
+    );
 
     setDate(newDate);
   }
@@ -139,8 +140,13 @@ export default function MainPage({ session }) {
         setBalance(initBalance + getCurrentBalance(data));
 
         // damit aeltere Finanzen nicht als Card angezeigt werden
-        setFinancesAtMonth(
-          data.filter((finance) => new Date(finance.date) >= currentMonth)
+        // setFinancesAtMonth(
+        //   data.filter((finance) => new Date(finance.date) >= currentMonth)
+        // );
+
+        // nur heutige oder zukünftige finanzen zeigen
+        setFinancesToShow(
+          data.filter((finance) => getDateAtZero(finance.date) >= today)
         );
 
         // markiere paydays in Kalendar
@@ -291,9 +297,9 @@ export default function MainPage({ session }) {
             />
 
             {allBalances &&
-              financesAtMonth &&
+              financesToShow &&
               getFinanceAndMonthCards(
-                financesAtMonth,
+                financesToShow,
                 initBalance,
                 allBalances,
                 showAlterFinanceForm,

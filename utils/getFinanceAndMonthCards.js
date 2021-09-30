@@ -21,7 +21,10 @@ export default function getFinanceAndMonthCards(
     const finance = finances[idx];
     if (new Date(finance.date).getMonth() !== currentMonth) {
       financesAndMonthCards.push(
-        <MonthCard month={getMonthName(new Date(finance.date).getMonth())} />
+        <MonthCard
+          month={getMonthName(new Date(finance.date).getMonth())}
+          key={getMonthName(new Date(finance.date).getMonth()) + finance.date}
+        />
       );
       currentMonth = new Date(finance.date).getMonth();
     }
@@ -42,7 +45,6 @@ export default function getFinanceAndMonthCards(
       />
     );
   }
-  console.log(financesAndMonthCards);
   return financesAndMonthCards;
 }
 // export default function getFinanceAndMonthCards(finances) {
