@@ -19,7 +19,8 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .header {
@@ -32,7 +33,7 @@
 
 .subtitle {
   color: var(--accent-color-80);
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .auth_cards {
