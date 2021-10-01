@@ -15,7 +15,8 @@ export default function getFinanceAndMonthCards(
   // const [financesAndMonthCards, setFinancesAndMonthCards] = useState([]);
   const financesAndMonthCards = [];
   // const [currentMonth, setCurrentMonth] = useState(null);
-  let currentMonth = new Date(finances[0].date).getMonth();
+  let currentMonth = null;
+  if (finances[0]) currentMonth = new Date(finances[0].date).getMonth();
 
   for (let idx = 0; idx < finances.length; idx++) {
     const finance = finances[idx];
