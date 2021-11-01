@@ -1,4 +1,9 @@
 :root {
+  /* --accent-color: rgb(94, 16, 79);
+  --accent-color-80: rgba(94, 16, 79, 0.8);
+  --accent-color-50: rgba(94, 16, 79, 0.5);
+  --accent-color-30: rgba(94, 16, 79, 0.3);
+  --accent-color-10: rgba(94, 16, 79, 0.1); */
   --accent-color: white;
   --accent-color-80: rgba(255, 255, 255, 0.8);
   --accent-color-50: rgba(255, 255, 255, 0.5);
