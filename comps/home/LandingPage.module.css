@@ -15,7 +15,8 @@
     display: none;
   }
 }
-*/ .bg_video {
+
+.bg_video {
   position: absolute;
   transform: rotate(90deg);
 

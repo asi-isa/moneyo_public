@@ -29,27 +29,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
-    ],
-    "/account/logout": [
-<<<<<<< HEAD
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/account/logout.js"
-=======
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/account/logout.js"
-    ],
-    "/account/signin": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/account/signin.js"
-    ],
-    "/account/user": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/account/user.js"
->>>>>>> e142ae9ccc6b6d868737c7af2ebc4c981ef83fbe
     ]
   },
   "ampFirstPages": []

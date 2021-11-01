@@ -6,15 +6,11 @@ import { AiTwotoneFire } from "react-icons/ai";
 export default function LandingPage() {
   return (
     <>
-      <video className={styles.bg_video} autoPlay loop muted>
-        <source src="/videos/bg_particles_720p.mp4" type="video/mp4" />
-      </video>
       <section className={styles.home}>
         <div className={styles.header}>
           <h1 className={styles.title}>moneyo</h1>
           <h5 className={styles.subtitle}>manage your finances</h5>
         </div>
-
         <div className={styles.auth_cards}>
           <Link href="/account/signin">
             <a className={styles.auth_card}>sign in</a>
@@ -23,13 +19,12 @@ export default function LandingPage() {
             <a className={styles.auth_card_learn}>learn more</a>
           </Link>
         </div>
-
         <article className={styles.copyright}>
           made with <AiTwotoneFire /> by{" "}
           <a className={styles.isatech}>isa_tech</a>
         </article>
 
-        {/* <Particles
+        <Particles
           className={styles.particles}
           params={{
             particles: {
@@ -82,7 +77,7 @@ export default function LandingPage() {
             //   },
             // },
           }}
-        /> */}
+        />
       </section>
     </>
   );
