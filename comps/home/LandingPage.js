@@ -6,6 +6,9 @@ import { AiTwotoneFire } from "react-icons/ai";
 export default function LandingPage() {
   return (
     <>
+      <video className={styles.bg_video} autoPlay loop muted>
+        <source src="/videos/bg_particles_720p.mp4" type="video/mp4" />
+      </video>
       <section className={styles.home}>
         <div className={styles.header}>
           <h1 className={styles.title}>moneyo</h1>
@@ -26,7 +29,7 @@ export default function LandingPage() {
           <a className={styles.isatech}>isa_tech</a>
         </article>
 
-        <Particles
+        {/* <Particles
           className={styles.particles}
           params={{
             particles: {
@@ -79,7 +82,7 @@ export default function LandingPage() {
             //   },
             // },
           }}
-        />
+        /> */}
       </section>
     </>
   );
