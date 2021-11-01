@@ -15,6 +15,17 @@
     display: none;
   }
 }
+*/ .bg_video {
+  position: absolute;
+  transform: rotate(90deg);
+
+  transform-origin: bottom left;
+  width: 100vh;
+  height: 100vw;
+  margin-top: -100vw;
+  object-fit: cover;
+  z-index: 1;
+}
 
 /* .bg_video {
   position: absolute;
