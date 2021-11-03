@@ -49,13 +49,15 @@
 .auth_cards {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
   width: 100%;
   font-size: 1.1rem;
+  padding: 0 1.8rem;
 }
 
 .auth_card_learn,
 .auth_card {
+  flex-grow: 1;
   padding: 0.5rem 1rem;
   border: 2px solid var(--accent-color-30);
   border-radius: 0.5rem;
