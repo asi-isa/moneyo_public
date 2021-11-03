@@ -250,8 +250,8 @@
   .vid_con {
     padding: 0.2rem;
     border-radius: 2rem;
+    max-width: 18vw;
     background-color: var(--accent-color);
-    height: fit-content;
   }
   .vid {
     display: block;

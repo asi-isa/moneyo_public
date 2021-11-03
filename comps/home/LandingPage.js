@@ -2,6 +2,7 @@ import styles from "./LandingPage.module.css";
 import Link from "next/link";
 import Particles from "react-particles-js";
 import { AiTwotoneFire } from "react-icons/ai";
+import { useState } from "react";
 
 export default function LandingPage() {
   return (
