@@ -64,8 +64,7 @@
   transition: border 350ms ease-in;
   cursor: pointer;
   text-align: center;
-  /* background-color: var(--accent-color-10); */
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--bg-color-80);
 }
 
 .auth_card_learn {

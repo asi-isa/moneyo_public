@@ -74,7 +74,9 @@ export default function LandingPage() {
 
         <article className={styles.copyright}>
           made with <AiTwotoneFire /> by{" "}
-          <a className={styles.isatech}>isa_tech</a>
+          <a className={styles.isatech} href="https://github.com/asi-isa">
+            isa_tech
+          </a>
         </article>
 
         <Particles
