@@ -125,7 +125,6 @@
   position: relative;
   max-width: 280px;
   height: 66vh;
-  border: 1px solid greenyellow;
   background-color: var(--accent-color);
   padding: 0.1rem;
   border-radius: 2rem;
