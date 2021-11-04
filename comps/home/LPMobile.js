@@ -13,7 +13,7 @@ export default function LPMobile() {
         params={{
           particles: {
             number: {
-              value: 120,
+              value: 94,
               density: {
                 enable: false,
               },
@@ -22,7 +22,7 @@ export default function LPMobile() {
               value: 3,
               random: true,
               anim: {
-                speed: 4,
+                speed: 2,
                 size_min: 0.3,
               },
             },
@@ -31,7 +31,7 @@ export default function LPMobile() {
             },
             move: {
               random: true,
-              speed: 1,
+              speed: 0.7,
               direction: "top",
               out_mode: "out",
             },

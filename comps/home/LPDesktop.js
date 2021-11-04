@@ -68,7 +68,7 @@ export default function LPDesktop() {
             </div>
           </div>
 
-          <div className={styles.con_con}>
+          <div className={styles.preview_con_con}>
             <div className={styles.preview_container}>
               <LPMobile />
             </div>
