@@ -35,8 +35,8 @@ export default function LPDesktop() {
                 </Link>
               </li>
               <li className={styles.li}>
-                <Link href="/account/signin">
-                  <a className={styles.link_outline}>sign in</a>
+                <Link href="/account/signup">
+                  <a className={styles.link_outline}>sign up</a>
                 </Link>
               </li>
             </ul>
@@ -50,7 +50,8 @@ export default function LPDesktop() {
                 start today and enjoy the freedom
               </h5>
               <h1 className={styles.title}>
-                manage your finances before they manage you
+                manage your finances{" "}
+                <span className={styles.underline}>before</span> they manage you
               </h1>
               <h5 className={styles.subtitle}>
                 the missing part between you and healthy financial habits
