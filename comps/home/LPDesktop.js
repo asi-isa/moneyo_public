@@ -9,7 +9,7 @@ import ComingSoon from "../card/ComingSoon";
 import { useState } from "react";
 
 export default function LPDesktop() {
-  const [showComingSoon, setShowComingSoon] = useState(true);
+  const [showComingSoon, setShowComingSoon] = useState(false);
 
   return (
     <>

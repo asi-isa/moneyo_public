@@ -10,7 +10,7 @@ export default function Info({ headerText, text, closeInfo }) {
       animate={{ y: 0, x: "-50%" }}
     >
       <AiOutlineCloseSquare className={styles.close_btn} onClick={closeInfo} />
-      <h5 className={styles.header}>{headerText}</h5>
+      <h2 className={styles.header}>{headerText}</h2>
       <p className={styles.text}>{text}</p>
     </motion.article>
   );

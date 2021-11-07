@@ -1,15 +1,33 @@
 import styles from "./ComingSoon.module.css";
 
+import { useState } from "react";
 import Image from "next/image";
+import { supabase } from "../../db/supabase";
 
-import Button from "../btn/Button";
+import Loader from "../loader/Loader";
+import Info from "../info/Info";
 import pattern from "../../public/images/pattern.jpg";
 
 export default function ComingSoon({ closeSelf }) {
-  function submitHandler(e) {
-    console.log(e);
-    console.log(e.current);
-    console.log(e.currentValue);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  async function submitHandler(e) {
+    e.preventDefault();
+    setLoading(true);
+    const email = e.currentTarget.elements[0].value;
+
+    try {
+      const { data, error } = await supabase
+        .from("coming_soon_emails")
+        .insert([{ email }]);
+
+      setSuccess(true);
+    } catch (err) {
+      // console.error(err);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -21,9 +39,10 @@ export default function ComingSoon({ closeSelf }) {
 
           <form className={styles.form} onSubmit={submitHandler}>
             <input
-              type="text"
+              type="email"
               className={styles.input}
               placeholder="your email"
+              required
             />
 
             <button className={styles.btn}>notify me *</button>
@@ -38,6 +57,17 @@ export default function ComingSoon({ closeSelf }) {
           <Image className={styles.img} src={pattern} quality={100} />
         </div>
       </article>
+      {loading && <Loader />}
+      {success && (
+        <Info
+          headerText="success :)"
+          text="as soon as we launch our apps we will notify you"
+          closeInfo={() => {
+            setSuccess(false);
+            closeSelf();
+          }}
+        />
+      )}
     </>
   );
 }

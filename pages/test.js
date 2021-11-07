@@ -6,7 +6,6 @@ import { useEffect } from "react";
 
 export default function Test() {
   const { width, height } = useWindowDimensions();
-  console.log(width, height);
 
   return (
     <section className={styles.test}>
