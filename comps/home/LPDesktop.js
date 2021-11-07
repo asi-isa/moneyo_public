@@ -65,13 +65,21 @@ export default function LPDesktop() {
                 </h5>
               </div>
               <div className={styles.ctas}>
-                <div className={styles.cta}>
+                <div
+                  className={styles.cta}
+                  onClick={() => setShowComingSoon(true)}
+                >
                   <FaApple />
-                  <a href="/">Apple Store</a>
+                  {/* <a href="/">Apple Store</a> */}
+                  Apple Store
                 </div>
-                <div className={styles.cta}>
+                <div
+                  className={styles.cta}
+                  onClick={() => setShowComingSoon(true)}
+                >
                   <IoLogoGooglePlaystore />
-                  <a href="/">Play Store</a>
+                  {/* <a href="/">Play Store</a> */}
+                  Play Store
                 </div>
               </div>
             </div>
@@ -84,7 +92,9 @@ export default function LPDesktop() {
           </div>
         </div>
       </section>
-      {showComingSoon && <ComingSoon />}
+      {showComingSoon && (
+        <ComingSoon closeSelf={() => setShowComingSoon(false)} />
+      )}
     </>
   );
 }
