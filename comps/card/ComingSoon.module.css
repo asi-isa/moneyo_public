@@ -28,6 +28,8 @@
   margin-bottom: 4rem;
 }
 .form {
+  display: flex;
+  justify-content: space-between;
 }
 .input {
   border: 2px solid var(--accent-color-30);
@@ -36,7 +38,6 @@
   font-size: 1rem;
 }
 .btn {
-  margin-left: 1rem;
   padding: 0.5rem;
   font-size: 1rem;
   font-weight: bold;
