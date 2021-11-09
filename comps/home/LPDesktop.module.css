@@ -4,7 +4,6 @@
   color: var(--accent-color);
   background-color: var(--bg-color);
   padding: 2rem;
-  border: 1px solid red;
 }
 .content {
   width: 100%;
@@ -153,11 +152,10 @@
   border-radius: 2rem;
   display: flex;
   flex-grow: 1;
-  margin: 4rem 2rem;
-  min-width: 240px;
+  min-width: 260px;
   max-width: 280px;
-  min-height: 560px;
-  max-height: 600px;
+  min-height: 590px;
+  max-height: 690px;
   /* border: 1px solid red; */
 }
 .preview_container {
