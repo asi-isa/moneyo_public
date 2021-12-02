@@ -13,7 +13,7 @@ export default function LPMobile() {
         params={{
           particles: {
             number: {
-              value: 94,
+              value: 120,
               density: {
                 enable: false,
               },
